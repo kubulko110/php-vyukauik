@@ -27,7 +27,7 @@ Použijte operátor %.
 */
 function jeSude(int $cislo): bool
 {
-	// TODO: Doplňte řešení
+		// TODO: Doplňte řešení
 }
 
 
