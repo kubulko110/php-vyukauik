@@ -27,6 +27,10 @@ Použijte operátor %.
 */
 function jeSude(int $cislo): bool
 {
+	if ($cislo % 2 == 0)
+		return true;
+	else
+		return false;
 		// TODO: Doplňte řešení
 }
 
@@ -43,6 +47,21 @@ vraťte text: "Nelze dělit nulou"
 */
 function kalkulacka(float $a, float $b, string $operace): float|string
 {
+	print("Vyber operaci");
+	switch ($operace){
+		case '+':
+			return $a + $b;
+		case '-':
+			return $a - $b;
+		case '*':
+			return $a * $b;
+		case '/':
+			if ($b == 0.0)
+				print("Nelze dělit nulou");
+			else
+				return $a / $b;
+	}
+	
 	// TODO: Doplňte řešení
 }
 
@@ -56,6 +75,13 @@ Nepoužívejte funkci max().
 */
 function nejvetsi(int $a, int $b, int $c): int
 {
+	$max = $a;
+	if ($max < $b)
+		$max = $b;
+	if ($max < $c)
+		$max = $c;
+	return $max;
+	
 	// TODO: Doplňte řešení
 }
 
@@ -69,7 +95,10 @@ pomocí cyklu.
 */
 function soucetDoN(int $n): int
 {
-	// TODO: Doplňte řešení
+	$soucet = 0;
+	for ($i=1; $i <= $n; $i++)
+		$soucet = $soucet + $i;
+	return $soucet;
 }
 
 
@@ -85,6 +114,13 @@ Ošetřete záporné číslo.
 */
 function faktorial(int $n): int
 {
+	$soucin = 1;
+	if ($n < 0)
+		return 0;
+	else
+		for ($i = 1; $i <= $n; $i++)
+			$soucin = $soucin * $i;
+	return $soucin;
 	// TODO: Doplňte řešení
 }
 
@@ -98,6 +134,12 @@ Použijte foreach.
 */
 function pocetSudyChCisel(array $pole): int
 {
+	$pocet = 0;
+	foreach ($pole as $cislo){
+		if ($cislo % 2 == 0)
+			$pocet++;
+	}
+	return $pocet;
 	// TODO: Doplňte řešení
 }
 
@@ -114,6 +156,11 @@ Použijte logické operátory.
 */
 function jePrijat(int $bodyTest, int $bodyUstni): bool
 {
+	$celkem = $bodyTest + $bodyUstni;
+	if ($bodyTest >= 25 && $celkem >= 60 )
+		return true;
+	else
+		return false;
 	// TODO: Doplňte řešení
 }
 
@@ -132,6 +179,9 @@ Příklad pro 5:
 */
 function nasobilka(int $cislo): void
 {
+	for ($i = 1; $i < 11; $i++)
+		echo ("$cislo * $i = " . ($cislo * $i) . "\n");
+
 	// TODO: Doplňte řešení
 }
 
@@ -145,7 +195,11 @@ Nepoužívejte strrev().
 */
 function obratText(string $text): string
 {
-	// TODO: Doplňte řešení
+    $vysledek = "";
+    for ($i = strlen($text) - 1; $i >= 0; $i--) {
+        $vysledek .= $text[$i];
+    }
+    return $vysledek;
 }
 
 
@@ -160,8 +214,15 @@ Vraťte:
 */
 function zkontrolujTip(int $tajneCislo, int $tip): string
 {
-	// TODO: Doplňte řešení
-}
+    if ($tip === $tajneCislo) {
+        return "Uhodl jsi!";
+    } elseif ($tip < $tajneCislo) {
+        return "Moc malé";
+    } else {
+        return "Moc velké";
+    }
+}// TODO: Doplňte řešení
+
 
 
 /*
@@ -172,10 +233,19 @@ Zjistěte, zda je číslo prvočíslo.
 */
 function jePrvocislo(int $n): bool
 {
-	// TODO: Doplňte řešení
+    if ($n < 2) {
+        return false;
+    }
+
+    // Stačí testovat do odmocniny z $n, ale pro jednoduchost jdeme do $n - 1
+    for ($i = 2; $i <= sqrt($n); $i++) {
+        if ($n % $i === 0) {
+            return false; // Našli jsme dělitele, končíme
+        }
+    }
+
+    return true; // Žádný dělitel nenalezen, je to ono
 }
-
-
 /*
 ========================================
 TESTOVACÍ VOLÁNÍ
@@ -209,3 +279,5 @@ TESTOVACÍ VOLÁNÍ
 // var_dump(jePrvocislo(7));
 
 */
+
+var_dump
